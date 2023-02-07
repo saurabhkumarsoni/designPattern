@@ -1,0 +1,496 @@
+<script>
+    function fruit(){
+        console.log(name);   // undefiend 
+        console.log(price);  // error like let can;t be hoisted
+        var name = 'banana';
+        let price = 20;
+    }
+    fruit();
+</script>
+
+<script>
+    for(var i=0; i<3; i++){
+        setTimeout(()=>{console.log('value of i => ',i)}, 2000)
+    }
+
+    //output is 3 times 3 beacuse var i has global scope and settimeout take times to provide the output and
+    // before this loop has been finished what happen here i value in glocal scope is 3 and in settimeout it will print console.log 3 conolelog 3 console.lo 3.
+
+</script>
+
+
+<script>
+    for(let i=0;i<3;i++){
+        setTimeout(()=>{console.log(i)},2000)
+    }
+
+    // 0,1,2 bcause here let has block scope and every time settimeout run gives difference value
+</script>
+
+<script>
+    console.log(+true);           // 1
+    console.log(typeof +true);    // number
+
+
+    // whenever we are adding + as prefix than it convert to a number;
+</script>
+
+<script>
+    console.log(!'Anil');   // false
+    console.log(typeof' Anil'); // string
+    console.log(typeof !'Anil');//  boolean
+
+    // when prefix is negation than its become boolean 
+</script>
+
+<script>
+    let data = 'size';
+    const bird = {
+        size: 'small'
+    }
+
+    console.log(bird[data]);     // small
+    console.log(bird['size']);  // small
+    console.log(bird.size);     // small
+    console.log(bird.data);     // undefined
+</script>
+
+<script>
+    let c = {name: 'saurabh'};
+    let d;
+    d = c
+    c.name = 'sonali';
+    console.log(d.name);
+    console.log(c.name);
+
+
+    // because both has same memory reference so when we change the name of c than name of d also changed
+
+</script>
+
+<script>
+    var x;
+    var x=10;
+    console.log(x) // 10
+</script>
+
+<script>
+    var x;
+    let x=10;
+    console.log(x) // error x has already been declared;
+
+    // we can nit declare let and var with same name
+</script>
+
+<script>
+    let a = 3;
+    let b  = new Number(3);
+    console.log(a == b);    // true
+    console.log(a === b);   // false
+
+    
+    //here typeof b is object so type is not same for both
+</script>
+
+<script>
+    let name;
+    nmae ={}; // typo
+    console.log(name) // undefined
+
+    //because we are declaring the name but assigning anything to it so it gives undefined
+
+</script>
+
+<script>
+    function sum(a,b){
+        console.log(a + b);  // 12
+    }
+    sum(1, '2')
+
+</script>
+<script>
+    let number = 0;
+    console.log(number++); //0 here first we are printing and than increasing so print 0 and increase 1
+    console.log(++number); //2  here inclrease 1 by 1 so 2
+    console.log(number)    //2   here value is 2 no increment
+
+</script>
+
+<script>
+    function getAge(...args){
+        console.log(typeof args) // object
+    }
+    getAge(21);
+</script>
+
+<script>
+    function getAge(){
+        'use strict';
+        age =21;
+        console.log(age); //  error age is not defiend
+    }
+    getAge()
+
+    // if we are using strict mode than we have to declare the type of the v ariable;
+</script>
+
+<script>
+    const sum = eval('10*10+5');
+    console.log(sum);    // 105
+</script>
+
+<script>
+    // how long is cool_secret accessible?
+    sessionStorage.setItem('cool_storage', 200);
+
+    // when we are usinf session storage value is removed oncw we close the tab or close the browser
+</script>
+
+<script>
+    const obj = {1: 'a', 2: 'b', 3: 'c'};
+    console.log( obj.hasOwnProperty('1'));     // true
+    console.log( obj.hasOwnProperty(1));         // true
+</script>
+
+<script>
+    const obj2 = {1: 'a', 2: 'b', 1: 'c'};
+    console.log( obj2);  //{1: 'c', 2: 'b'}
+
+
+    // overides the value but the position is same here
+
+</script>
+
+<script>
+    for(let i=1; i<5;i++){
+        if(i === 3) continue;    // when 3 come than here it will skip
+        console.log(i);   // 1,2,4
+    }
+
+</script>
+
+<script>
+    const foo = () => console.log('first');
+    const bar = () => setTimeout(()=>{console.log('second')},3000);
+    const baz =() => console.log('third')
+
+    foo();
+    bar();
+    baz();
+</script>
+
+<script>
+    const person = {name: 'Lydia'};
+    function sayHi(age){
+        return `${this.name} is ${age}`;
+    }
+
+    console.log(sayHi.call(person, 21))   // lydia is 21
+    console.log(sayHi.bind(person, 21)())   // lydia is 21
+</script>
+
+<script>
+    function sayHello(){
+        return (()=> 0)();
+    }
+
+    console.log(typeof sayHello()) // number
+      
+      
+    // Here this ()=> 0)() function calling itself and return the 0 so typeof is number 
+    // ()=> '')()  gives as string than it gives type of as string
+
+</script>
+
+<script>
+    
+    function sayHelloFunction(){
+        return ()=> 0;
+    }
+
+    console.log(typeof sayHelloFunction()) // number
+      
+
+    // here gives type as function
+      
+</script>
+
+<script>
+    console.log(typeof typeof 1)
+</script>
+
+<script>
+    const numbers = [1,2,3];
+    numbers[9] = 11;
+    console.log(numbers)
+
+    // [1, 2, 3, undefined, …,11]
+
+</script>
+
+<script>
+    const numbers = [1,2,3];
+    numbers[3] = numbers;
+    console.log(numbers);
+
+    // gives infinite array after 3
+</script>
+
+<script>
+    console.log(!!null);  // false  null with negation means true and negation of true is false
+    console.log(!!'');    // false '' is a negative value and negation of negative value is ttrue and than negation true is false
+    console.log(!!1)      // true   1 is positive value and negation of 1 is false and negation of false is true
+</script>
+
+<script>
+    console.log(setInterval(() => console.log('Hi'), 1000))
+    console.log(setInterval(() => console.log('Hi'), 1000))
+    console.log(setInterval(() => console.log('Hi'), 1000))
+    console.log(setInterval(() => console.log('Hi'), 1000))
+
+    // here every time setinterval return a uniques value
+</script>
+
+<script>
+    console.log([...'Saurabh'])
+</script>
+
+<script>
+    let datas = 3 + 4 + '10';
+    console.log(datas);      // 710
+    console.log(typeof datas)   // string
+</script>
+<script>
+    console.log(typeof 3 + 4 + '10'); // number 
+   // here typeof 3 is number  410
+</script>
+
+<script>
+    console.log(typeof (3+4+'10'))   //  string because it combile all the value 
+</script>
+
+
+<script>
+    console.log(typeof []); // object
+</script>
+
+<script>
+    console.log([] === []) // false
+
+</script>
+
+<script>
+    let mapdata = [1,2,3].map(num =>{
+        if(typeof num === 'number') return;  // here there is nothing is returning
+        return num*2;
+    })
+    console.log(mapdata) // [undefined, undefined, undefined]
+</script>
+
+<script>
+    function getInfo(member){
+        member.name ='saurabh';
+    }
+    const person1 = {name: 'sonali'};
+    getInfo(person1)
+    console.log(person1);
+</script>
+
+<script>
+    (()=>{
+        let x =( y = 10);
+    })()
+    console.log(typeof x); // undefined
+    console.log(typeof y)  // number 
+
+    // because x have block level scope so its scope inside {}
+    // and y is not declared inside block so its act as a global scope so its typeof is number
+</script>
+
+<script>
+     (()=>{
+        let x = 10;
+    })()
+
+    (()=>{
+        let x = 10;
+    })()
+
+    // here we have  declare two let with same varibale name but its not gives ansy error brcause both have two diffrent scope
+
+</script>
+
+<script>
+    (()=>{
+  let x = y = 10;
+})();
+
+(()=>{
+  let x = y = 20;
+})()
+console.log(y ); // 20
+
+//because here y has become global scope and in first function value of y is 10 
+// and in second function value of y is 20 as it is not declared with let and var inside block so it goes to global scope
+
+
+
+</script>
+
+<script>
+    // Reverse string 
+    let iterable = 'saurabh kumar soni';
+    let reversed = "";
+    for (let value of iterable) {
+    reversed = value + reversed;
+    }
+    const revered1 = reversed.split(' ').reverse().join(' ')
+
+    console.log(revered1);  //  hbaruas ramuk inos
+    console.log(reversed) //   inos ramuk hbaruas
+</script>
+
+
+
+<script>
+    const arr = ['one', 'two', 'one', 'two', 'three', 'four'];
+
+const count ={};
+
+arr.forEach(element =>{
+  count[element] = (count[element] || 0) + 1;
+})
+console.log(count);
+</script>
+
+<script>
+    const abc = {};
+const xyz = { key: 'b' };
+const mno = { key: 'c' };
+
+abc[xyz] = 123;
+abc[mno] = 456;
+
+console.log(abc[xyz]); //456
+</script>
+
+
+<script>
+    // counter.js
+let counter = 10;
+export default counter;
+// index.js
+import myCounter from './counter';
+
+myCounter += 1;
+
+console.log(myCounter);
+// An imported module is read-only: you cannot modify the imported module. Only the module that exports them can change its value.
+
+//When we try to increment the value of myCounter, it throws an error: myCounter is read-only and cannot be modified
+</script>
+
+<script>
+
+const names = 'Lydia';
+ages = 21;
+
+console.log(delete names); // false
+console.log(delete ages);  // true
+
+//The delete operator returns a boolean value: true on a successful deletion, else it'll return false. However, variables declared with the var, const or let keyword cannot be deleted using the delete operator.
+// The name variable was declared with a const keyword, so its deletion is not successful: false is returned. When we set age equal to 21, we actually added a property called age to the global object. You can successfully delete properties from objects this way, also the global object, so delete age returns true
+
+</script>
+
+
+<script>
+
+const numbers = [1, 2, 3, 4, 5];
+const [y] = numbers;
+
+console.log(y);   // 1
+
+// we can unpack values from array or properties from object through destructuring
+
+</script>
+
+
+<script>
+    const user = { name: 'Lydia', age: 21 };
+const admin = { admin: true, ...user };
+
+console.log(admin);
+
+
+// { admin: true, name: "Lydia", age: 21 }
+// It's possible to combine objects using the spread operator .... 
+</script>
+
+
+<script>
+    let newList = [1, 2, 3].push(4);
+
+console.log(newList.push(5));
+
+//The .push method returns the new length of the array, not the array itself! By setting newList equal to [1, 2, 3].push(4), we set newList equal to the new length of the array: 4.
+
+// Then, we try to use the .push method on newList. Since newList is the numerical value 4, we cannot use the .push method: a TypeError is thrown.
+</script>
+
+
+
+<script>
+    const persons = {
+  name: 'Lydia',
+  age: 21,
+};
+
+for (const [x, y] of Object.entries(persons)) {
+  console.log(x, y); // name Lydia age 21
+}
+
+
+//Object.entries(person) returns an array of nested arrays, containing the keys and objects:
+
+//[ [ 'name', 'Lydia' ], [ 'age', 21 ] ]
+
+//Using the for-of loop, we can iterate over each element in the array, the subarrays in this case. We can destructure the subarrays instantly in the for-of loop, using const [x, y]. x is equal to the first element in the subarray, y is equal to the second element in the subarray.
+
+//The first subarray is [ "name", "Lydia" ], with x equal to "name", and y equal to "Lydia", which get logged. The second subarray is [ "age", 21 ], with x equal to "age", and y equal to 21, which get logged.
+</script>
+
+<script>
+
+function nums(a, b) {
+  if (a > b) console.log('a is bigger');
+  else console.log('b is bigger');
+  return   // not returning any thing
+   a + b;
+}
+
+
+console.log(nums(4, 2));  //  a is bigger  and return undefined because not returning anything
+console.log(nums(1, 2)); //  b is bigger and return undefined because not returning anything
+</script>
+
+<script>
+    var a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+ 
+ for (var i in a) 
+ {
+    console.log("row " + i);
+    for (var j in a[i]) 
+      {
+       console.log(" " + a[i][j]);
+      }
+ }
+</script>
+
+<script>
+    const flatten =(arr) =>
+        arr.reduce((a,b) => a.concat(Array.isArray(b)? flatten(b): b), [])
+    
+    console.log(flatten([1, [2,3], [4,[5],[6,[7,8,9],10],11],[12],13]))
+</script>
+ 
